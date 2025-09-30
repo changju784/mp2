@@ -34,35 +34,45 @@ body,
     font-weight: bold;
 }
 
-.header-planet{
-    width:80px;
-    height:80px;
-    border-radius:50%;
-    margin:0 auto 8px auto;
+.header-planet {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin: 0 auto 8px auto;
     background: radial-gradient(circle at 30% 30%, #ffd, #ffb273 10%, #c35f00 40%, #6b3b00 100%);
-    box-shadow: 0 0 30px rgba(255,200,120,0.12), inset -6px -6px 20px rgba(0,0,0,0.4);
-    position:relative;
+    box-shadow: 0 0 30px rgba(255, 200, 120, 0.12), inset -6px -6px 20px rgba(0, 0, 0, 0.4);
+    position: relative;
 }
-.header-planet::after{
-    content:'';
-    position:absolute;
-    right:-12px;
-    top:12px;
-    width:22px;
-    height:22px;
-    border-radius:50%;
-    background: rgba(255,255,255,0.08);
+
+.header-planet::after {
+    content: '';
+    position: absolute;
+    right: -12px;
+    top: 12px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
     filter: blur(6px);
 }
 
-.app-title{ margin:0; font-family: 'Segoe UI', Roboto, Helvetica, Arial; letter-spacing:1px }
-.app-subtitle{ margin:6px 0 0 0; color:rgba(230,238,248,0.85); font-size:0.95rem }
+.app-title {
+    margin: 0;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial;
+    letter-spacing: 1px
+}
+
+.app-subtitle {
+    margin: 6px 0 0 0;
+    color: rgba(230, 238, 248, 0.85);
+    font-size: 0.95rem
+}
 
 /* subtle starfield inside header */
-.app-header{
-    background: radial-gradient(circle at 10% 20%, rgba(255,255,255,0.02), transparent 8%), linear-gradient(180deg,#071a3a,#031024);
-    padding:22px 12px;
-    border-radius:10px;
+.app-header {
+    background: radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.02), transparent 8%), linear-gradient(180deg, #071a3a, #031024);
+    padding: 22px 12px;
+    border-radius: 10px;
 }
 
 
