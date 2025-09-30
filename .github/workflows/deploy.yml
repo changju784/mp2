@@ -5,11 +5,14 @@ on:
     branches: ["main"]
   workflow_dispatch:
 
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
   pages: write
   id-token: write
 
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
 concurrency:
   group: "pages"
   cancel-in-progress: false
@@ -17,9 +20,6 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./mp2/mp2
 
     steps:
       - name: Checkout
@@ -30,7 +30,6 @@ jobs:
         with:
           node-version: 20
           cache: npm
-          cache-dependency-path: mp2/mp2/package-lock.json
 
       - name: Install dependencies
         run: npm ci
@@ -41,5 +40,17 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./mp2/mp2/build
+          path: ./build
+  
+  deploy:
+    needs: build
 
+    runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+      
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
