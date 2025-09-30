@@ -30,6 +30,8 @@ jobs:
         with:
           node-version: 20
           cache: npm
+          # Ensure the cache step looks at the lockfile inside the mp2 subfolder
+          cache-dependency-path: ./mp2/package-lock.json
 
       - name: Install dependencies
         run: npm ci
