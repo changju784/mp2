@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./mp2/mp2  
+        working-directory: ./mp2/mp2
 
     steps:
       - name: Checkout
@@ -30,7 +30,7 @@ jobs:
         with:
           node-version: 20
           cache: npm
-          cache-dependency-path: ./mp2/mp2/package-lock.json 
+          cache-dependency-path: mp2/mp2/package-lock.json
 
       - name: Install dependencies
         run: npm ci
@@ -41,14 +41,5 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./mp2/mp2/build  
+          path: ./mp2/mp2/build
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - id: deployment
-        uses: actions/deploy-pages@v4
