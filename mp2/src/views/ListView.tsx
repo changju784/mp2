@@ -27,7 +27,6 @@ const ListView: React.FC = () => {
 
     if (!ctx) return <div>Loading (search first)</div>;
 
-    const { items } = ctx;
 
     return (
         <div>
