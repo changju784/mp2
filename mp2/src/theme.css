@@ -197,3 +197,55 @@ select {
     background: transparent;
     color: var(--muted)
 }
+
+/* Table / ListView styling */
+.table {
+    border-collapse: separate;
+    border-spacing: 0 8px;
+}
+
+.table th,
+.table td {
+    text-align: left;
+    padding: 10px 12px;
+}
+
+.table thead th {
+    color: #cfe0ff;
+    font-weight: 600
+}
+
+.table-row {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.00));
+    border: 1px solid rgba(255, 255, 255, 0.02);
+    border-radius: 8px;
+    transition: transform 120ms ease, box-shadow 120ms ease;
+    cursor: pointer
+}
+
+.table-row:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+}
+
+.cell-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* fixed column widths */
+.col-title {
+    width: 48%;
+    max-width: 48%;
+}
+
+.col-date {
+    width: 20%;
+    max-width: 20%;
+}
+
+.col-description {
+    width: 32%;
+    max-width: 32%;
+}

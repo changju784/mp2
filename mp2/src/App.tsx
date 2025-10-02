@@ -54,7 +54,6 @@ function App() {
             </div>
           </div>
 
-          {/* Footer */}
           <footer className="app-footer">
             <span>© {new Date().getFullYear()} Jung In Chang</span>
           </footer>
@@ -65,7 +64,7 @@ function App() {
 }
 
 const SearchBox: React.FC<{ onSearch: (q: string) => void; loading: boolean }> = ({ onSearch, loading }) => {
-  const [q, setQ] = useState('apollo');
+  const [q, setQ] = useState('');
   return (
     <div className="search-row">
       <TextField variant="filled" size="small" value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search NASA images" sx={{ input: { color: '#e6eef8' } }} />
