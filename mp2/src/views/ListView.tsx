@@ -59,41 +59,45 @@ const ListView: React.FC = () => {
         <div>
             <h2>List View</h2>
             <div className="list-controls">
-                <input placeholder="Quick filter..." value={globalFilter} onChange={(e) => setGlobalFilter(e.target.value)} />
+                <input className="quick-filter" placeholder="Quick filter..." value={globalFilter} onChange={(e) => setGlobalFilter(e.target.value)} />
             </div>
 
-            <table className="table" style={{ width: '100%' }}>
-                <thead>
-                    {table.getHeaderGroups().map((headerGroup: any) => (
-                        <tr key={headerGroup.id}>
-                            {headerGroup.headers.map((header: any) => {
-                                const key = header.column.columnDef?.accessorKey || header.id;
-                                return (
-                                    <th key={header.id} className={`col-${key}`} onClick={header.column.getToggleSortingHandler()} style={{ cursor: 'pointer' }}>
-                                        {flexRender(header.column.columnDef.header, header.getContext())}
-                                        <span>{header.column.getIsSorted() === 'asc' ? ' 🔼' : header.column.getIsSorted() === 'desc' ? ' 🔽' : ''}</span>
-                                    </th>
-                                );
-                            })}
-                        </tr>
-                    ))}
-                </thead>
-                <tbody>
-                    {table.getRowModel().rows.map((row: any) => (
-                        <tr key={row.id} className="table-row" onClick={() => onRowClick(row)}>
-                            {row.getVisibleCells().map((cell: any) => {
-                                const key = cell.column.columnDef?.accessorKey || cell.id;
-                                const content = flexRender(cell.column.columnDef.cell, cell.getContext());
-                                return (
-                                    <td key={cell.id} className={`col-${key}`} title={typeof content === 'string' ? content : ''}>
-                                        <div className="cell-truncate">{content}</div>
-                                    </td>
-                                );
-                            })}
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
+            <div className="list-table-wrapper">
+                <table className="table" style={{ width: '100%' }}>
+                    <thead>
+                        {table.getHeaderGroups().map((headerGroup: any) => (
+                            <tr key={headerGroup.id}>
+                                {headerGroup.headers.map((header: any) => {
+                                    const key = header.column.columnDef?.accessorKey || header.id;
+                                    return (
+                                        <th key={header.id} className={`col-${key}`} onClick={header.column.getToggleSortingHandler()} style={{ cursor: 'pointer' }}>
+                                            {flexRender(header.column.columnDef.header, header.getContext())}
+                                            <span>{header.column.getIsSorted() === 'asc' ? ' 🔼' : header.column.getIsSorted() === 'desc' ? ' 🔽' : ''}</span>
+                                        </th>
+                                    );
+                                })}
+                            </tr>
+                        ))}
+                    </thead>
+                    <tbody>
+                        {table.getRowModel().rows.map((row: any) => (
+                            <tr key={row.id} className="table-row" onClick={() => onRowClick(row)}>
+                                {row.getVisibleCells().map((cell: any) => {
+                                    const key = cell.column.columnDef?.accessorKey || cell.id;
+                                    const content = flexRender(cell.column.columnDef.cell, cell.getContext());
+                                    // make description cells multi-line clamped
+                                    const extraClass = key === 'description' ? 'cell-truncate multiline' : 'cell-truncate';
+                                    return (
+                                        <td key={cell.id} className={`col-${key}`} title={typeof content === 'string' ? content : ''}>
+                                            <div className={extraClass}>{content}</div>
+                                        </td>
+                                    );
+                                })}
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
 
             <div style={{ marginTop: 12, display: 'flex', gap: 8, alignItems: 'center' }}>
                 <button className="btn" onClick={() => table.previousPage()} disabled={!table.getCanPreviousPage()}>Prev</button>

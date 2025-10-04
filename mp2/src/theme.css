@@ -249,3 +249,30 @@ select {
     width: 32%;
     max-width: 32%;
 }
+
+/* wrapper to control table size and enable scrolling when content overflows */
+.list-table-wrapper {
+    max-width: 100%;
+    /* control max height so very long tables scroll vertically */
+    max-height: 520px;
+    overflow: auto;
+    padding-right: 6px;
+    /* give small breathing room for scrollbar */
+}
+
+/* optional multi-line clamp variant (use by adding .multiline within a cell) */
+.cell-truncate.multiline {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    /* show up to 3 lines */
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.quick-filter {
+    min-width: 240px;
+    max-width: 420px;
+}
