@@ -1,4 +1,3 @@
-<img width="1830" height="1343" alt="image" src="https://github.com/user-attachments/assets/ccf991bb-357e-4d2a-89f7-280a8274fb63" /># NASA Image Explorer (mp2)
 
 Lightweight React + TypeScript single-page app that searches and browses the NASA Image and Video Library. It was built for a class project and uses a small custom API client, React Context for state, TanStack Table for the list view, and a dark, space-themed UI.
 
