@@ -198,6 +198,19 @@ select {
     color: var(--muted)
 }
 
+/* Ensure native select dropdown options are readable on the dark theme. Scoped to app container. */
+.app-container select,
+.app-container select option {
+    background: white;
+    color: black;
+}
+
+/* Slightly brighter select background so the control is visible */
+.app-container select {
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--muted);
+}
+
 /* Table / ListView styling */
 .table {
     border-collapse: separate;

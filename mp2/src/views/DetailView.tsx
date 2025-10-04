@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { NasaContext } from '../context/NasaContext';
+import formatDate from '../utils/formatDate';
 
 const DetailView: React.FC = () => {
   const { id } = useParams();
@@ -18,7 +19,7 @@ const DetailView: React.FC = () => {
         <button className="btn btn-minimal" onClick={() => nav(-1)}>Back</button>
       </div>
       <h2>{item.data[0].title}</h2>
-      <div>{item.data[0].date_created}</div>
+      <div>{formatDate(item.data[0].date_created)}</div>
       <div>{item.data[0].description}</div>
       {item.links && item.links[0] && <img src={item.links[0].href} alt={item.data[0].title} className="detail-img" />}
       <div className="detail-controls">

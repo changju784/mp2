@@ -1,5 +1,6 @@
 import React, { useContext, useMemo, useState } from 'react';
 import { NasaContext } from '../context/NasaContext';
+import formatDate from '../utils/formatDate';
 import { useNavigate } from 'react-router-dom';
 import {
     useReactTable,
@@ -16,10 +17,11 @@ const ListView: React.FC = () => {
     const [globalFilter, setGlobalFilter] = useState('');
     const [sorting, setSorting] = useState<any[]>([]);
 
+
     const data = useMemo(() => (ctx ? ctx.items.map((it: any) => ({
         id: it.data[0].nasa_id,
         title: it.data[0].title,
-        date: it.data[0].date_created,
+        date: formatDate(it.data[0].date_created),
         description: it.data[0].description || ''
     })) : []), [ctx]);
 
